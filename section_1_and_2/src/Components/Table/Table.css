@@ -1,0 +1,22 @@
+.table-container{
+    width: 600px;
+    height:fit-content;
+}
+
+table {
+    width: 100%;
+    border: 3px solid aqua;
+}
+
+th, td{
+    width: 200px;
+    height: 40px;
+}
+
+th{
+    background-color: aqua;
+}
+
+td{
+    text-align: center;
+}

@@ -17,15 +17,15 @@ const Navbar = () => {
     <nav className='navbar-main'>
         <div className='search-input-container'>
             <div className='search-logo'>
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <i className="fa-solid fa-magnifying-glass"></i>
             </div>
             <input className='search-inputbar' type='text' placeholder='Search by name...' value={searchString} onChange={searchChangeHandler}/>
             <div className='search-cancel-logo' style={{display:cancelDisplay}} onClick={()=>{setSearchString("");setCancelDisplay('none')}}>
-                <i class="fa-solid fa-xmark"></i>
+                <i className="fa-solid fa-xmark"></i>
             </div>
         </div>
       <ul className='navbar-ul'>
-        <li className='navbar-li'><i class="fa-solid fa-right-from-bracket fa-xl"></i></li>
+        <li className='navbar-li'><i className="fa-solid fa-right-from-bracket fa-xl"></i></li>
       </ul>
     </nav>
   )
