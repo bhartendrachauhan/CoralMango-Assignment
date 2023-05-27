@@ -35,6 +35,11 @@
     margin-left: 10px;
 }
 
+.search-cancel-logo{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
 .navbar-ul{
     list-style-type: none;
     margin:0;
