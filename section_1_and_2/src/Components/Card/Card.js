@@ -6,10 +6,10 @@ const Card = () => {
     const context = useContext(Context)
   return (
     <div className='card-container'>
-      {context.state.data.map(each=>{
+      {context.state.data.map((each,index)=>{
         return (
-            <div className='each-card-container'>
-                <i class="fa-solid fa-user fa-4x"></i>
+            <div key={index} className='each-card-container'>
+                <i className="fa-solid fa-user fa-4x"></i>
                 <span>{each.name}</span>
                 <span>{each.occupation}</span>
                 <span>{each.age} years</span>

@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Sort.css";
+import { Context } from "../../ContextProvider";
 
 const Sort = () => {
+  const context = useContext(Context)
     const [sortType, setSortType] = useState("");
     const [caret,setCaret] = useState('down')
     const [optionDisplay, setOptionDisplay] = useState('none')
@@ -20,7 +22,7 @@ const Sort = () => {
         setOptionDisplay('none')
         let option = e.target.name
         setSortType(option)
-        // context.selectFilterOption(option)
+        context.dispatch({type:'SORT',payload:option})
       }
   return (
     <>
@@ -50,14 +52,6 @@ const Sort = () => {
             <button
               className="filter-each-option-btn"
               name={"Age"}
-              onClick={handleFilterOption}
-            ></button>
-          </div>
-          <div className="filter-each-option">
-            Clear
-            <button
-              className="filter-each-option-btn"
-              name={""}
               onClick={handleFilterOption}
             ></button>
           </div>
