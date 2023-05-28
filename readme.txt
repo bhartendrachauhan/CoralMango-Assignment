@@ -6,3 +6,7 @@ To run the section 1 and 2, either check the deployed link or clone the reposito
 Deployed Link: https://coral-mango-assignment.vercel.app/
 
 Section 3 contains the ES6 coding questions.
+
+Some images of the assignment are as follows:
+
+
