@@ -57,3 +57,26 @@
     justify-content: center;
     margin-top: 20px;
 }
+
+.media-container{
+    display:none;
+    width: 100%;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 750px){
+    .sort-toggle-container{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .toggle-container{
+        grid-area: 1/2/2/3;
+    }
+    .filter-message-container{
+        display: none;
+    }
+    .media-container{
+        display: flex;
+    }
+}

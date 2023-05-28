@@ -71,6 +71,15 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      <div className="media-container">
+      <div>
+          {checkFilter && (
+            <div className="filter-message">
+              <h4>You are viewing filtered results!</h4>
+            </div>
+          )}
+        </div>
+      </div>
       <div className="detail-container">
         {checkToggle?<Card/>:<Table/>}
       </div>

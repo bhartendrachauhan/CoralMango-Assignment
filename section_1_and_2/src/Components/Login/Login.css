@@ -20,7 +20,7 @@
 }
 
 .login-message-container{
-    width: 150px;
+    width: 200px;
     height: 30px;
     margin-top: 15px;
     display: flex;
@@ -35,6 +35,9 @@
     border-radius: 10px;
     padding: 10px;
     color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .login-container i{
