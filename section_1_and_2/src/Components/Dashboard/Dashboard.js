@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./Dashboard.css";
 import Navbar from "../Navbar/Navbar";
 import Sort from "../Sort/Sort";
 import Card from "../Card/Card";
 import Table from "../Table/Table";
+import { Context } from "../../ContextProvider";
 
 const Dashboard = () => {
+    const context = useContext(Context)
+    const [loader,setLoader] = useState(false)
   const [checkFilter, setCheckFilter] = useState(false);
   const [checkToggle,setCheckToggle] = useState(false)
   const [tableStyle, setTableStyle] = useState({
@@ -29,9 +32,17 @@ const Dashboard = () => {
     setTableStyle({});
     setCheckToggle(true)
   };
+  useEffect(()=>{
+    fetchData()
+  },[])
+  const fetchData = async ()=>{
+    const api = await fetch('https://coralmango.com/api/react-test')
+    const response = await api.json()
+    context.dispatch({type:"SET_DATA",payload:response})
+  }
   return (
     <>
-      <Navbar />
+      <Navbar setCheckFilter={setCheckFilter}/>
       <div className="sort-toggle-container">
         <div className="sort-container">
           <Sort />

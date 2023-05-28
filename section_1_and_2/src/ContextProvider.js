@@ -11,9 +11,15 @@ let initialData = []
 
 const reducer = (state,action)=>{
   switch(action.type){
-    case 'SET_DATA': return {
+    case 'SET_DATA': {
+      initialData = action.payload
+      return {
       ...state,
       data: action.payload
+    }}
+    case 'DATA_RESET': return {
+      ...state,
+      data:initialData
     }
     case 'SORT': {
       switch(action.payload){
@@ -61,21 +67,20 @@ const reducer = (state,action)=>{
         data:searchedData
       }
     }
+    case 'LOGIN': return {
+      ...state,
+      isLoggedIn:true
+    }
+    case 'LOGOUT': return {
+      ...state,
+      isLoggedIn:false
+    }
     default: return state
   }
 }
 
 const ContextProvider = (props) => {
   const [state,dispatch] = useReducer(reducer,initialState)
-  useEffect(()=>{
-    fetchData()
-  },[])
-  const fetchData = async ()=>{
-    const api = await fetch('https://coralmango.com/api/react-test')
-    const response = await api.json()
-    dispatch({type:"SET_DATA",payload:response})
-    initialData = response
-  }
   return (
     <Context.Provider value={{
       state,
