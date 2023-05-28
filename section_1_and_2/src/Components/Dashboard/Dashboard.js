@@ -41,6 +41,7 @@ const Dashboard = () => {
     const api = await fetch("https://coralmango.com/api/react-test");
     const response = await api.json();
     context.dispatch({ type: "SET_DATA", payload: response });
+    setLoader(false)
   };
   return (
     <>
