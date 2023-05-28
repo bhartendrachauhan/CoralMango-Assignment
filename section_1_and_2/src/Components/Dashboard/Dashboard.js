@@ -5,12 +5,13 @@ import Sort from "../Sort/Sort";
 import Card from "../Card/Card";
 import Table from "../Table/Table";
 import { Context } from "../../ContextProvider";
+import Loader from '../../utils/loader.gif'
 
 const Dashboard = () => {
-    const context = useContext(Context)
-    const [loader,setLoader] = useState(false)
+  const context = useContext(Context);
+  const [loader, setLoader] = useState(false);
   const [checkFilter, setCheckFilter] = useState(false);
-  const [checkToggle,setCheckToggle] = useState(false)
+  const [checkToggle, setCheckToggle] = useState(false);
   const [tableStyle, setTableStyle] = useState({
     backgroundColor: "aqua",
     color: "white",
@@ -22,7 +23,7 @@ const Dashboard = () => {
       color: "white",
     });
     setCardStyle({});
-    setCheckToggle(false)
+    setCheckToggle(false);
   };
   const toggleCardHandler = () => {
     setCardStyle({
@@ -30,19 +31,20 @@ const Dashboard = () => {
       color: "white",
     });
     setTableStyle({});
-    setCheckToggle(true)
+    setCheckToggle(true);
   };
-  useEffect(()=>{
-    fetchData()
-  },[])
-  const fetchData = async ()=>{
-    const api = await fetch('https://coralmango.com/api/react-test')
-    const response = await api.json()
-    context.dispatch({type:"SET_DATA",payload:response})
-  }
+  useEffect(() => {
+    setLoader(true)
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    const api = await fetch("https://coralmango.com/api/react-test");
+    const response = await api.json();
+    context.dispatch({ type: "SET_DATA", payload: response });
+  };
   return (
     <>
-      <Navbar setCheckFilter={setCheckFilter}/>
+      <Navbar setCheckFilter={setCheckFilter} />
       <div className="sort-toggle-container">
         <div className="sort-container">
           <Sort />
@@ -72,7 +74,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="media-container">
-      <div>
+        <div>
           {checkFilter && (
             <div className="filter-message">
               <h4>You are viewing filtered results!</h4>
@@ -81,7 +83,14 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="detail-container">
-        {checkToggle?<Card/>:<Table/>}
+        {loader?
+        <div>
+          <img style={{width:'100px'}} src={Loader} alt="loading..."/>
+        </div>:
+        <>
+        {checkToggle ? <Card /> : <Table />}
+        </>
+        }
       </div>
     </>
   );
